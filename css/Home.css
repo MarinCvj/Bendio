@@ -1,13 +1,13 @@
 ﻿body {
     margin: 0;
     padding: 0;
-    background-color: #1A120B;
+    background-color: #000000;
     color: rgb(200, 200, 200);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .home-container {
-    background-color: rgb(213, 206, 163, 0.05);
+    background-color: rgb(200, 200, 200, 0.15);
     border-radius: 5rem;
     max-width: 50%;
     display: flex;
@@ -17,4 +17,5 @@
     margin: auto;
     margin-top: 1rem;
     padding: 2rem;
+    box-shadow: rgba(200, 200, 200, 0.35) 0px 5px 15px;
 }
