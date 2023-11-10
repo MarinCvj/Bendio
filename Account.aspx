@@ -28,6 +28,7 @@
                     <p>Password</p>
                     <asp:TextBox runat="server" TextMode="Password" ID="password_create" placeholder="Enter 8 character or more"/>
 
+                    
                     <div class="remember-me">
                         <input type="checkbox" />
                         <p>Remember me</p>

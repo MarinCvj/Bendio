@@ -37,14 +37,8 @@ namespace Bendio
             SqlCommand sqlCmd = new SqlCommand(user, cnn);
             sqlCmd.ExecuteNonQuery();
 
-            if (remember_me.Checked)
-            {
-                CreateCookie(email_text);
-            }
-            else
-            {
-                Response.Redirect("~/Home.aspx");
-            }
+            CreateCookie(email_text);
+            Response.Redirect("~/Home.aspx");
             cnn.Close();
         }
 
@@ -62,13 +56,8 @@ namespace Bendio
                 while (sqlReader.Read())
                 {
                     user = 1;
-                    if (remember_me.Checked)
-                    {
-                        CreateCookie(email_text);
-                    }else
-                    {
-                        Response.Redirect("~/Home.aspx");
-                    }
+                    CreateCookie(email_text);
+                    Response.Redirect("~/Home.aspx");
                 }
             }
 
