@@ -24,11 +24,13 @@ namespace Bendio
             string name_of_band = band_name.Text;
             int num_of_members = int.Parse(members_num.Text);
             string description_text = description.Text;
+            Random random = new Random();
+            int band_code = random.Next(1000, 9999);
 
             if (num_of_members != 0)
             {
-                string band_info = "INSERT INTO dbo.Band (BandName, BandMembers, BandDescription)" +
-                " VALUES ('" + name_of_band + "'," + num_of_members + ",'" + description_text + "')";
+                string band_info = "INSERT INTO dbo.Band (BandName, BandMembers, BandDescription, BandCode)" +
+                " VALUES ('" + name_of_band + "'," + num_of_members + ",'" + description_text + "'," + band_code + ")";
                 SqlCommand sqlCmd = new SqlCommand(band_info, cnn);
                 sqlCmd.ExecuteNonQuery();
 

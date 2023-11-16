@@ -114,6 +114,7 @@
     <Content Include="Controls\Navigation_bar.ascx" />
     <Content Include="css\Account.css" />
     <Content Include="css\Home.css" />
+    <Content Include="css\My_band.css" />
     <Content Include="css\Navigation_bar.css" />
     <Content Include="css\New_band.css" />
     <Content Include="favicon.ico" />
@@ -129,6 +130,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Home.aspx" />
+    <Content Include="MyBand.aspx" />
     <Content Include="NewBand.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -190,6 +192,12 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyBand.aspx.cs">
+      <DependentUpon>MyBand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyBand.aspx.designer.cs">
+      <DependentUpon>MyBand.aspx</DependentUpon>
     </Compile>
     <Compile Include="NewBand.aspx.cs">
       <DependentUpon>NewBand.aspx</DependentUpon>

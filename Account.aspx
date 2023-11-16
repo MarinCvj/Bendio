@@ -28,12 +28,6 @@
                     <p>Password</p>
                     <asp:TextBox runat="server" TextMode="Password" ID="password_create" placeholder="Enter 8 character or more"/>
 
-                    
-                    <div class="remember-me">
-                        <input type="checkbox" />
-                        <p>Remember me</p>
-                    </div>
-
                     <asp:Button CssClass="btn" runat="server" OnClick="Create_Account" Text="Create Account"/>
                 </div>
             
@@ -43,11 +37,6 @@
                     <asp:TextBox runat="server" TextMode="Email" id="email_log" placeholder="you@example.com"/>
                     <p>Password</p>
                     <asp:TextBox runat="server" TextMode="Password" ID="password_log" placeholder="Enter 8 character or more"/>
-
-                    <div class="remember-me">
-                        <asp:CheckBox runat="server" ID="remember_me"/>
-                        <p>Remember me</p>
-                    </div>
 
                     <asp:Label runat="server" ID="wrong" Text="Wrong email or password." Visible="false"></asp:Label>
 

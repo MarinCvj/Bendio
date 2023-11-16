@@ -5,6 +5,7 @@
         <li><a href="Home.aspx">Home</a></li>
         <li><a href="Account.aspx">Account</a></li>
         <li><a href="NewBand.aspx">New band</a></li>
+        <li><a href="MyBand.aspx">My band</a></li>
     </ul>
     <div class="burger" id="burger">
         <div class="line1"></div>

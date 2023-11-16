@@ -19,13 +19,12 @@ namespace Bendio
             cnn.Open();
         }
 
-        private void CreateCookie(string email_address)
+        private void CreateCookie(string value, string cookie_name)
         {
-            HttpCookie c = new HttpCookie("email");
-            c.Value = email_address;
+            HttpCookie c = new HttpCookie(cookie_name);
+            c.Value = value;
             c.Expires.Add(new TimeSpan(1, 0, 0));
             Response.Cookies.Add(c);
-            Response.Redirect("~/Home.aspx");
         }
 
         protected void Create_Account(object sender, EventArgs e)
@@ -37,7 +36,8 @@ namespace Bendio
             SqlCommand sqlCmd = new SqlCommand(user, cnn);
             sqlCmd.ExecuteNonQuery();
 
-            CreateCookie(email_text);
+            string cookie_name = "email";
+            CreateCookie(email_text, cookie_name);
             Response.Redirect("~/Home.aspx");
             cnn.Close();
         }
@@ -56,7 +56,8 @@ namespace Bendio
                 while (sqlReader.Read())
                 {
                     user = 1;
-                    CreateCookie(email_text);
+                    string cookie_name = "email";
+                    CreateCookie(email_text, cookie_name);
                     Response.Redirect("~/Home.aspx");
                 }
             }

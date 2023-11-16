@@ -69,15 +69,6 @@ namespace Bendio
         protected global::System.Web.UI.WebControls.TextBox password_log;
 
         /// <summary>
-        /// remember_me control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox remember_me;
-
-        /// <summary>
         /// wrong control.
         /// </summary>
         /// <remarks>
