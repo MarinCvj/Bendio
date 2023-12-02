@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -28,29 +29,28 @@ namespace Bendio
 
             var cookie_email = Request.Cookies["email"].Value;
 
-            string get_user_bandID = "SELECT Band_ID FROM [User] WHERE email = '" + cookie_email + "';";
-            SqlCommand sqlCmd1 = new SqlCommand(get_user_bandID, cnn);
-            SqlDataReader bandID = sqlCmd1.ExecuteReader();
-            bandID.Read();
-            string user_band_id = bandID["Band_ID"].ToString();
-            bandID.Close();
+            /*Creating an SqlCmd1 Command that has a type of a stord procedure with a parameter email*/
+            SqlCommand sqlCmd1 = new SqlCommand();
+            sqlCmd1.CommandText = "dbo.getBandInfo_by_email";
+            sqlCmd1.CommandType = CommandType.StoredProcedure;
+            sqlCmd1.Connection = cnn;
+            SqlParameter param1 = new SqlParameter("@email", cookie_email);
+            sqlCmd1.Parameters.Add(param1);
 
-            string get_band_info = "SELECT * FROM Band WHERE ID = " + user_band_id + ";";
-            SqlCommand sqlCmd2 = new SqlCommand(get_band_info, cnn);
-            SqlDataReader bandInfo = sqlCmd2.ExecuteReader();
+            /*Creating a data set that can hold multiple tables at once*/
+            SqlDataAdapter da = new SqlDataAdapter(sqlCmd1);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
 
-            Band band = new Band();
-            if (bandInfo.Read())
-            {
-                band.id = Convert.ToInt32(bandInfo["ID"]);
-                band.name = bandInfo["BandName"].ToString();
-                band.members = Convert.ToInt32(bandInfo["BandMembers"]);
-                band.description = bandInfo["BandDescription"].ToString();
-                band.code = Convert.ToInt32(bandInfo["BandCode"]);
-            }
-            bandInfo.Close();
+            /*Creting an object bandInfo of a class Band that contains all data of 1 band*/
+            Band bandInfo = new Band();
+            bandInfo.id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
+            bandInfo.name = ds.Tables[0].Rows[0]["BandName"].ToString();
+            bandInfo.members = Convert.ToInt32(ds.Tables[0].Rows[0]["BandMembers"]);
+            bandInfo.description = ds.Tables[0].Rows[0]["BandDescription"].ToString();
+            bandInfo.code = Convert.ToInt32(ds.Tables[0].Rows[0]["BandCode"]);
 
-            test.Text = band.description;
+            test.Text = bandInfo.description;
         }
     }
 }
