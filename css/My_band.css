@@ -1,14 +1,6 @@
-﻿body {
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
-    color: rgb(200, 200, 200);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.my-band-container {
-    background-color: rgb(200, 200, 200, 0.15);
-    border-radius: 5rem;
+﻿.my-band-container {
+    background-color: rgb(10, 10, 10, 0.1);
+    border-radius: 1rem;
     max-width: 50%;
     display: flex;
     flex-direction: column;
@@ -18,4 +10,68 @@
     margin-top: 1rem;
     padding: 2rem;
     box-shadow: rgba(200, 200, 200, 0.35) 0px 5px 15px;
+}
+
+.default-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.band-info-parts {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn {
+    width: 100%;
+    background-color: #000000;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    min-height: 60px;
+    margin-top: 1rem;
+    white-space: normal;
+}
+
+input[type="text"] {
+    padding: 0.5rem;
+    background-color: transparent;
+    color: white;
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition: all 0.5s ease-in-out;
+}
+
+    input[type="text"]:focus {
+        border-bottom-color: skyblue;
+    }
+
+.desc {
+    text-align: start;
+    padding: 1rem 0rem !important;
+    background-color: rgb(150, 150, 150, 0.3) !important;
+    border-radius: 0.5rem;
+    border: 2px solid gray !important;
+    color: white;
+    width: 100%;
+    resize: none;
+}
+
+    .desc::placeholder {
+        text-align: center;
+        color: white;
+    }
+
+.change-settings {
+    display: none;
+    flex-direction: column;
+    gap: 2rem;
 }

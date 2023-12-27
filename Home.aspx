@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link href="css/All.css" rel="stylesheet" />
     <link href="css/Home.css" rel="stylesheet" />
     <link href="css/Navigation_bar.css" rel="stylesheet" />
 </head>

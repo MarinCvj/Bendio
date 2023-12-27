@@ -113,6 +113,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Controls\Navigation_bar.ascx" />
     <Content Include="css\Account.css" />
+    <Content Include="css\All.css" />
     <Content Include="css\Home.css" />
     <Content Include="css\My_band.css" />
     <Content Include="css\Navigation_bar.css" />

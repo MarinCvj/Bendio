@@ -1,14 +1,6 @@
-﻿body {
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
-    color: rgb(200, 200, 200);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.account-container {
-    background-color: rgb(200, 200, 200, 0.15);
-    border-radius: 5rem;
+﻿.account-container {
+    background-color: rgb(10, 10, 10, 0.1);
+    border-radius: 1rem;
     max-width: 50%;
     display: flex;
     flex-direction: column;
@@ -49,7 +41,7 @@ input[type="email"], input[type="password"] {
     border-top: none;
     border-left: none;
     border-right: none;
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 input[type="email"]:focus, input[type="password"]:focus {
@@ -69,6 +61,7 @@ input[type="email"]:focus, input[type="password"]:focus {
     font-weight: 600;
     min-height: 60px;
     padding: 16px 24px;
+    white-space: normal;
 }
 
 @media all and (max-width:1100px) {

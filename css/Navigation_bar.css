@@ -10,8 +10,8 @@
     left: 0;
     right: 0;
     z-index: 999;
-    color: white;
-    background-color: #444444;
+    color: rgb(255, 234, 0);
+    background-color: #000000;
 }
 
 .logo {
@@ -19,7 +19,7 @@
     font-size: 30px;
     font-weight: bold;
     margin-left: 2rem;
-    color: white;
+    color: rgb(255, 234, 0, 0.9);
 }
 
 .nav-links {
@@ -50,7 +50,7 @@
             height: 2px;
             bottom: -2px;
             left: 0;
-            background-color: white;
+            background-color: rgb(255, 234, 0, 0.9);
             visibility: hidden;
             transform: scaleX(0);
             transition: all 0.2s ease-out;
@@ -69,7 +69,7 @@
     .burger div {
         width: 25px;
         height: 3px;
-        background-color: white;
+        background-color: rgb(255, 234, 0, 0.9);
         margin: 5px;
         margin-right: 5rem;
         margin-top: 1px;
@@ -77,7 +77,7 @@
     }
 
 .nav-links a {
-    color: white;
+    color: rgb(255, 234, 0, 0.9);
 }
 
 @media all and (max-width:800px) {
