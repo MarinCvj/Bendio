@@ -18,7 +18,7 @@
 <body>
     <form id="form1" runat="server">
         <uc1:Navigation_bar runat="server" ID="Navigation_bar" />
-        <div class="account-container">
+        <div class="container">
             <h1>Create account or Log in</h1>
 
             <div class="account">

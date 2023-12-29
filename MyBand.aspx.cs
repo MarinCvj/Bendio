@@ -43,12 +43,14 @@ namespace Bendio
                 da.Fill(ds);
 
                 /*Creating an object bandInfo of a class Band that contains all data of 1 band*/
-                Band bandInfo = new Band();
-                bandInfo.id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
-                bandInfo.name = ds.Tables[0].Rows[0]["BandName"].ToString();
-                bandInfo.members = Convert.ToInt32(ds.Tables[0].Rows[0]["BandMembers"]);
-                bandInfo.description = ds.Tables[0].Rows[0]["BandDescription"].ToString();
-                bandInfo.code = Convert.ToInt32(ds.Tables[0].Rows[0]["BandCode"]);
+                Band bandInfo = new Band
+                {
+                    id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]),
+                    name = ds.Tables[0].Rows[0]["BandName"].ToString(),
+                    members = Convert.ToInt32(ds.Tables[0].Rows[0]["BandMembers"]),
+                    description = ds.Tables[0].Rows[0]["BandDescription"].ToString(),
+                    code = Convert.ToInt32(ds.Tables[0].Rows[0]["BandCode"])
+                };
 
                 return bandInfo;
             }
@@ -103,6 +105,18 @@ namespace Bendio
             band_members.Text = bandInfo.members.ToString();
             band_description.Text = bandInfo.description;
             band_code.Text = bandInfo.code.ToString();
+        }
+
+        protected void Cancel(object sender, EventArgs e)
+        {
+            Band bandInfo = Get_band_data();
+
+            change_name.Text = bandInfo.name;
+            change_members.Text = bandInfo.members.ToString();
+            change_description.Text = bandInfo.description;
+
+            change_settings.Attributes["style"] = "display: none";
+            band_default_settings.Attributes["style"] = "display: flex";
         }
     }
 }

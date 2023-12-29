@@ -18,7 +18,7 @@
 <body>
     <form id="form1" runat="server">
         <uc1:Navigation_bar runat="server" id="Navigation_bar" />
-        <div class="home-container">
+        <div class="container">
             <h1>Welcome to Bendio</h1>
             <h2>Here you can make your band better.</h2>
 

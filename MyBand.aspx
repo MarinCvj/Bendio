@@ -16,7 +16,7 @@
 <body>
     <form id="form1" runat="server">
         <uc1:Navigation_bar runat="server" ID="Navigation_bar" />
-        <div class="my-band-container">
+        <div class="container">
             <h1>My band</h1>
 
             <div class="band-info">
@@ -52,7 +52,7 @@
 
                     <div class="band-info-parts">
                         <b>Number of members: </b>
-                        <asp:TextBox runat="server" ID="change_members"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="change_members" TextMode="Number"></asp:TextBox>
                     </div>
 
                     <div class="band-info-parts">
@@ -60,6 +60,7 @@
                         <asp:TextBox runat="server" TextMode="MultiLine" CssClass="desc" placeholder="About your band" ID="change_description"></asp:TextBox>
                     </div>
                     <asp:Button runat="server" OnClick="Save_settings" Text="Save" CssClass="btn"/>
+                    <asp:Button runat="server" OnClick="Cancel" Text="Cancel" CssClass="btn" BackColor="#C41E3A"/>
                 </asp:Panel>
             </div>
         </div>

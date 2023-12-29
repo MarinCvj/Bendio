@@ -1,18 +1,4 @@
-﻿.my-band-container {
-    background-color: rgb(10, 10, 10, 0.1);
-    border-radius: 1rem;
-    max-width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-top: 1rem;
-    padding: 2rem;
-    box-shadow: rgba(200, 200, 200, 0.35) 0px 5px 15px;
-}
-
-.default-settings {
+﻿.default-settings {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -23,37 +9,6 @@
     align-items: center;
     gap: 10px;
 }
-
-input[type="text"] {
-    padding: 0.5rem;
-    background-color: transparent;
-    color: white;
-    width: 100%;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    transition: all 0.5s ease-in-out;
-}
-
-    input[type="text"]:focus {
-        border-bottom-color: skyblue;
-    }
-
-.desc {
-    text-align: start;
-    padding: 1rem 0rem !important;
-    background-color: rgb(150, 150, 150, 0.3) !important;
-    border-radius: 0.5rem;
-    border: 2px solid gray !important;
-    color: white;
-    width: 100%;
-    resize: none;
-}
-
-    .desc::placeholder {
-        text-align: center;
-        color: white;
-    }
 
 .change-settings {
     display: none;
