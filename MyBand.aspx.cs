@@ -42,6 +42,11 @@ namespace Bendio
                 DataSet ds = new DataSet();
                 da.Fill(ds);
 
+                if (ds.Tables[0].Rows.Count <= 0)
+                {
+                    return null;
+                }
+
                 /*Creating an object bandInfo of a class Band that contains all data of 1 band*/
                 Band bandInfo = new Band
                 {
@@ -58,11 +63,24 @@ namespace Bendio
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Cookies["email"] == null)
+            {
+                Response.Redirect("Account.aspx");
+            }
+
             Band bandInfo = Get_band_data();
+
+            if (bandInfo == null)
+            {
+                join_make_band.Attributes["style"] = "display: flex";
+                return;
+            }
 
             string cs = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
             cnn = new SqlConnection(cs);
-            cnn.Open();            
+            cnn.Open();
+
+            band_default_settings.Attributes["style"] = "display: flex";
 
             band_name.Text = bandInfo.name;
             band_members.Text = bandInfo.members.ToString();
@@ -117,6 +135,30 @@ namespace Bendio
 
             change_settings.Attributes["style"] = "display: none";
             band_default_settings.Attributes["style"] = "display: flex";
+        }
+
+        protected void New_band(object sender, EventArgs e)
+        {
+            Response.Redirect("~/NewBand.aspx");
+        }
+
+        protected void Join_band(object sender, EventArgs e)
+        {
+            enter_band_code.Attributes["style"] = "display: flex";
+            container.Attributes["style"] = "opacity: 0.5";
+        }
+
+        protected void Enter_band_code(object sender, EventArgs e)
+        {
+            var band_code = code.Text;
+
+            Response.Redirect("~/Home.aspx");
+        }
+
+        protected void Close(object sender, EventArgs e)
+        {
+            enter_band_code.Attributes["style"] = "display: none";
+            container.Attributes["style"] = "animation: appear-container 0.5s";
         }
     }
 }

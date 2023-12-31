@@ -114,7 +114,7 @@
         }
 
             .nav-links.active a {
-                color: white;
+                color: rgb(255, 234, 0, 0.9);
             }
 
                 .nav-links.active a::before {

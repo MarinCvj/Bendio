@@ -6,7 +6,6 @@
     margin-top: 2rem;
     display: flex;
     gap: 7rem;
-    width: 100%;
     justify-content: center;
 }
 
@@ -16,7 +15,6 @@
 
 .log-in {
     max-width: 40%;
-    padding-right: 1rem;
 }
 
 input[type="email"], input[type="password"] {

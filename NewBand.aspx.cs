@@ -17,6 +17,11 @@ namespace Bendio
             string cs = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
             cnn = new SqlConnection(cs);
             cnn.Open();
+
+            if (Request.Cookies["email"] == null)
+            {
+                Response.Redirect("Account.aspx");
+            }
         }
 
         protected void Submit(object sender, EventArgs e)

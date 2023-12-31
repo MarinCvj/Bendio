@@ -16,7 +16,7 @@
 <body>
     <form id="form1" runat="server">
         <uc1:Navigation_bar runat="server" ID="Navigation_bar" />
-        <div class="container">
+        <asp:Panel runat="server" ID="container" class="container">
             <h1>My band</h1>
 
             <div class="band-info">
@@ -62,8 +62,21 @@
                     <asp:Button runat="server" OnClick="Save_settings" Text="Save" CssClass="btn"/>
                     <asp:Button runat="server" OnClick="Cancel" Text="Cancel" CssClass="btn" BackColor="#C41E3A"/>
                 </asp:Panel>
+
+                <asp:Panel CssClass="join-make-band" runat="server" ID="join_make_band">
+                    <h3>You don't have a band</h3>
+                    <b>Create a new band or join one</b>
+                    <asp:Button runat="server" OnClick="New_band" Text="Create a new band" CssClass="btn"/>
+                    <asp:Button runat="server" OnClick="Join_band" Text="Join a band" CssClass="btn"/>
+                </asp:Panel>
             </div>
-        </div>
+        </asp:Panel>
+        <asp:Panel CssClass="band-code" runat="server" ID="enter_band_code">
+            <asp:Button runat="server" CssClass="close" OnClick="Close" Text="+"></asp:Button>
+            <b>Enter the band code that the owner gave to you:</b>
+            <asp:TextBox runat="server" ID="code" placeholder="0000" MaxLength="4"></asp:TextBox>
+            <asp:Button runat="server" OnClick="Enter_band_code" Text="Enter" CssClass="btn"/>
+        </asp:Panel>
     </form>
 </body>
 </html>

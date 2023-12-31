@@ -20,6 +20,7 @@
         <uc1:Navigation_bar runat="server" ID="Navigation_bar" />
         <div class="container">
             <h1>Create account or Log in</h1>
+            <h4>You need to have an account to start a band.</h4>
 
             <div class="account">
                 <div class="create-acc">
@@ -27,7 +28,7 @@
                     <p>Email Address</p>
                     <asp:TextBox runat="server" TextMode="Email" ID="email_create" placeholder="you@example.com"/>
                     <p>Password</p>
-                    <asp:TextBox runat="server" TextMode="Password" ID="password_create" placeholder="Enter 8 character or more"/>
+                    <asp:TextBox runat="server" TextMode="Password" ID="password_create" placeholder="********"/>
 
                     <asp:Button CssClass="btn" runat="server" OnClick="Create_Account" Text="Create Account"/>
                 </div>
@@ -37,7 +38,7 @@
                     <p>Email Address</p>
                     <asp:TextBox runat="server" TextMode="Email" id="email_log" placeholder="you@example.com"/>
                     <p>Password</p>
-                    <asp:TextBox runat="server" TextMode="Password" ID="password_log" placeholder="Enter 8 character or more"/>
+                    <asp:TextBox runat="server" TextMode="Password" ID="password_log" placeholder="********"/>
 
                     <asp:Label runat="server" ID="wrong" Text="Wrong email or password." Visible="false"></asp:Label>
 
