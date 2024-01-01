@@ -42,6 +42,7 @@
                     </div>
                     <p> Give this code to other band members so they can join your band.</p>
                     <asp:Button runat="server" OnClick="Change_settings" Text="Change settings" CssClass="btn"/>
+                    <asp:Button runat="server" OnClick="Delete_band" Text="Delete band" CssClass="btn" BackColor="#C41E3A"/>
                 </asp:Panel>
 
                 <asp:Panel class="change-settings" runat="server" ID="change_settings">
@@ -76,6 +77,11 @@
             <b>Enter the band code that the owner gave to you:</b>
             <asp:TextBox runat="server" ID="code" placeholder="0000" MaxLength="4"></asp:TextBox>
             <asp:Button runat="server" OnClick="Enter_band_code" Text="Enter" CssClass="btn"/>
+        </asp:Panel>
+
+        <asp:Panel CssClass="band-code" runat="server" ID="code_entered">
+            <b>Ask the band creator to accept you into the band.</b>
+            <asp:Button runat="server" OnClick="Close_code_entered" Text="Ok" CssClass="btn"/>
         </asp:Panel>
     </form>
 </body>

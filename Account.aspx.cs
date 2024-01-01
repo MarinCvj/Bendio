@@ -29,16 +29,17 @@ namespace Bendio
 
         protected void Create_Account(object sender, EventArgs e)
         {
+            string username_text = username_create.Text;
             string email_text = email_create.Text;
             string password_text = password_create.Text;
 
-            string user = "INSERT INTO [Bendio].[dbo].[User] (email, password) VALUES ('" + email_text + "','" + password_text + "')";
+            string user = "INSERT INTO [Bendio].[dbo].[User] (username, email, password) VALUES ('" + username_text + "','" + email_text + "','" + password_text + "')";
             SqlCommand sqlCmd = new SqlCommand(user, cnn);
             sqlCmd.ExecuteNonQuery();
 
             string cookie_name = "email";
             CreateCookie(email_text, cookie_name);
-            Response.Redirect("~/Home.aspx");
+            Response.Redirect("~/NewBand.aspx");
             cnn.Close();
         }
 
@@ -58,7 +59,7 @@ namespace Bendio
                     user = 1;
                     string cookie_name = "email";
                     CreateCookie(email_text, cookie_name);
-                    Response.Redirect("~/Home.aspx");
+                    Response.Redirect("~/NewBand.aspx");
                 }
             }
 

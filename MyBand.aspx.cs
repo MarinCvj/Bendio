@@ -151,14 +151,42 @@ namespace Bendio
         protected void Enter_band_code(object sender, EventArgs e)
         {
             var band_code = code.Text;
-
-            Response.Redirect("~/Home.aspx");
+            enter_band_code.Attributes["style"] = "display: none";
+            code_entered.Attributes["style"] = "display: flex";
         }
 
         protected void Close(object sender, EventArgs e)
         {
             enter_band_code.Attributes["style"] = "display: none";
             container.Attributes["style"] = "animation: appear-container 0.5s";
+        }
+
+        protected void Close_code_entered(object sender, EventArgs e)
+        {
+            code_entered.Attributes["style"] = "display: none";
+            container.Attributes["style"] = "animation: appear-container 0.5s";
+        }
+
+        protected void Delete_band(object sender, EventArgs e)
+        {
+            Band bandInfo = Get_band_data();
+
+            string cs = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            string set_bandid_null = "UPDATE [Bendio].[dbo].[User] SET Band_ID = NULL WHERE Band_ID = "+ bandInfo.id + ";";
+            SqlCommand sqlCmd = new SqlCommand(set_bandid_null, cnn);
+            sqlCmd.ExecuteNonQuery();
+
+            string delete_band = "DELETE FROM dbo.Band WHERE ID="+ bandInfo.id + ";";
+            SqlCommand sqlCmd1 = new SqlCommand(delete_band, cnn);
+            sqlCmd1.ExecuteNonQuery();
+
+            band_default_settings.Attributes["style"] = "display: none";
+            join_make_band.Attributes["style"] = "display: flex";
+
+            cnn.Close();
         }
     }
 }

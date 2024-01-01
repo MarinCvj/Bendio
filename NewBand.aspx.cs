@@ -52,7 +52,7 @@ namespace Bendio
                 SqlCommand sqlCmd2 = new SqlCommand(put_BandID, cnn);
                 sqlCmd2.ExecuteNonQuery();
 
-                Response.Redirect("~/Home.aspx");
+                Response.Redirect("~/MyBand.aspx");
             }
             else
             {

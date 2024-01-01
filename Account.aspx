@@ -25,6 +25,8 @@
             <div class="account">
                 <div class="create-acc">
                     <h2>Create account</h2>
+                    <p>Username</p>
+                    <asp:TextBox runat="server" ID="username_create" placeholder="username"/>
                     <p>Email Address</p>
                     <asp:TextBox runat="server" TextMode="Email" ID="email_create" placeholder="you@example.com"/>
                     <p>Password</p>
