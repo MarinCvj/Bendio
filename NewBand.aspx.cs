@@ -32,10 +32,12 @@ namespace Bendio
             Random random = new Random();
             int band_code = random.Next(1000, 9999);
 
+            var cookie_email = Request.Cookies["email"].Value;
+
             if (num_of_members != 0)
             {
-                string band_info = "INSERT INTO dbo.Band (BandName, BandMembers, BandDescription, BandCode)" +
-                " VALUES ('" + name_of_band + "'," + num_of_members + ",'" + description_text + "'," + band_code + ")";
+                string band_info = "INSERT INTO dbo.Band (BandName, BandMembers, BandDescription, BandCode, BandOwner)" +
+                " VALUES ('" + name_of_band + "'," + num_of_members + ",'" + description_text + "'," + band_code + ",'" + cookie_email + "');";
                 SqlCommand sqlCmd = new SqlCommand(band_info, cnn);
                 sqlCmd.ExecuteNonQuery();
 
@@ -45,8 +47,6 @@ namespace Bendio
                 num.Read();
                 int ID = num.GetInt32(0);
                 num.Close();
-
-                var cookie_email = Request.Cookies["email"].Value;
 
                 string put_BandID = "UPDATE [User] SET Band_ID = " + ID + " WHERE email = '" + cookie_email + "'";
                 SqlCommand sqlCmd2 = new SqlCommand(put_BandID, cnn);

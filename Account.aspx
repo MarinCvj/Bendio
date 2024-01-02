@@ -23,7 +23,7 @@
             <h4>You need to have an account to start a band.</h4>
 
             <div class="account">
-                <div class="create-acc">
+                <asp:Panel runat="server" ID="create_acc" class="create-acc">
                     <h2>Create account</h2>
                     <p>Username</p>
                     <asp:TextBox runat="server" ID="username_create" placeholder="username"/>
@@ -32,10 +32,12 @@
                     <p>Password</p>
                     <asp:TextBox runat="server" TextMode="Password" ID="password_create" placeholder="********"/>
 
+                    <asp:Label runat="server" ID="already_exists" CssClass="label" Text="User with this email already exists." Visible="false"></asp:Label>
+
                     <asp:Button CssClass="btn" runat="server" OnClick="Create_Account" Text="Create Account"/>
-                </div>
+                </asp:Panel>
             
-                <div class="log-in">
+                <asp:Panel runat="server" ID="log_in" class="log-in">
                     <h2>Log in</h2>
                     <p>Email Address</p>
                     <asp:TextBox runat="server" TextMode="Email" id="email_log" placeholder="you@example.com"/>
@@ -45,7 +47,7 @@
                     <asp:Label runat="server" ID="wrong" Text="Wrong email or password." Visible="false"></asp:Label>
 
                     <asp:Button CssClass="btn" runat="server" OnClick="Log_in" Text="Log in" />
-                </div>
+                </asp:Panel>
             </div>
         </div>
     </form>

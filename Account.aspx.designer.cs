@@ -33,6 +33,15 @@ namespace Bendio
         protected global::Bendio.Controls.Navigation_bar Navigation_bar;
 
         /// <summary>
+        /// create_acc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel create_acc;
+
+        /// <summary>
         /// username_create control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,24 @@ namespace Bendio
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox password_create;
+
+        /// <summary>
+        /// already_exists control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label already_exists;
+
+        /// <summary>
+        /// log_in control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel log_in;
 
         /// <summary>
         /// email_log control.
