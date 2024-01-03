@@ -61,7 +61,7 @@ namespace Bendio
 
             string cookie_name = "email";
             CreateCookie(email_text, cookie_name);
-            Response.Redirect("~/NewBand.aspx");
+            Response.Redirect("~/MyBand.aspx");
             cnn.Close();
         }
 
@@ -81,7 +81,7 @@ namespace Bendio
                     user = 1;
                     string cookie_name = "email";
                     CreateCookie(email_text, cookie_name);
-                    Response.Redirect("~/NewBand.aspx");
+                    Response.Redirect("~/MyBand.aspx");
                 }
             }
 

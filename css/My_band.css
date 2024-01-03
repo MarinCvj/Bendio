@@ -41,6 +41,11 @@
     animation: appear 0.5s;
 }
 
+.invalid_code {
+    color: var(--color);
+    display: block;
+}
+
 @media all and (max-width:1000px) {
     .band-code {
         width: 30%;

@@ -80,13 +80,9 @@
         <asp:Panel CssClass="band-code" runat="server" ID="enter_band_code">
             <asp:Button runat="server" CssClass="close" OnClick="Close" Text="+"></asp:Button>
             <b>Enter the band code that the owner gave to you:</b>
-            <asp:TextBox runat="server" ID="code" placeholder="0000" MaxLength="4"></asp:TextBox>
+            <asp:Label runat="server" ID="invalid_band_code" CssClass="invalid_code" Text="Band code is invalid." Visible="false"></asp:Label>
+            <asp:TextBox runat="server" ID="code" placeholder="000000" style="text-transform:uppercase" MaxLength="6"></asp:TextBox>
             <asp:Button runat="server" OnClick="Enter_band_code" Text="Enter" CssClass="btn"/>
-        </asp:Panel>
-
-        <asp:Panel CssClass="band-code" runat="server" ID="code_entered">
-            <b>Ask the band creator to accept you into the band.</b>
-            <asp:Button runat="server" OnClick="Close_code_entered" Text="Ok" CssClass="btn"/>
         </asp:Panel>
     </form>
 </body>

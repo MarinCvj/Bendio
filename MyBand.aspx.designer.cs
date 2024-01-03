@@ -150,6 +150,15 @@ namespace Bendio
         protected global::System.Web.UI.WebControls.Panel enter_band_code;
 
         /// <summary>
+        /// invalid_band_code control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label invalid_band_code;
+
+        /// <summary>
         /// code control.
         /// </summary>
         /// <remarks>
@@ -157,14 +166,5 @@ namespace Bendio
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox code;
-
-        /// <summary>
-        /// code_entered control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel code_entered;
     }
 }

@@ -29,15 +29,14 @@ namespace Bendio
             string name_of_band = band_name.Text;
             int num_of_members = int.Parse(members_num.Text);
             string description_text = description.Text;
-            Random random = new Random();
-            int band_code = random.Next(1000, 9999);
+            string band_code = GenerateRandomCode();
 
             var cookie_email = Request.Cookies["email"].Value;
 
             if (num_of_members != 0)
             {
                 string band_info = "INSERT INTO dbo.Band (BandName, BandMembers, BandDescription, BandCode, BandOwner)" +
-                " VALUES ('" + name_of_band + "'," + num_of_members + ",'" + description_text + "'," + band_code + ",'" + cookie_email + "');";
+                " VALUES ('" + name_of_band + "'," + num_of_members + ",'" + description_text + "','" + band_code + "','" + cookie_email + "');";
                 SqlCommand sqlCmd = new SqlCommand(band_info, cnn);
                 sqlCmd.ExecuteNonQuery();
 
@@ -59,6 +58,20 @@ namespace Bendio
                 zero_members.Visible = true;
             }
             cnn.Close();
+        }
+
+        private string GenerateRandomCode()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random random = new Random();
+            char[] codeArray = new char[6];
+
+            for (int i = 0; i < 6; i++)
+            {
+                codeArray[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new string(codeArray);
         }
     }
 }
