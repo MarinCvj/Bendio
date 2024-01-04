@@ -154,6 +154,15 @@ namespace Bendio
                 }
             }
 
+            if (Request.Cookies["email"].Value != bandInfo.owner)
+            {
+                change_settings_btn.Visible = false;
+                delete_band_btn.Visible = false;
+            }else
+            {
+                rule.Visible = false;
+            }
+
             if (!IsPostBack)
             {
                 change_name.Text = bandInfo.name;
@@ -273,6 +282,7 @@ namespace Bendio
             sqlCmd2.ExecuteNonQuery();
 
             cnn.Close();
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
 
         protected void Close(object sender, EventArgs e)

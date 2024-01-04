@@ -45,9 +45,10 @@
                         <b>Band owner: </b>
                         <asp:Label runat="server" ID="band_owner"></asp:Label>
                     </div>
-                    <p> Give the band code number to other band members so they can join your band.</p>
-                    <asp:Button runat="server" OnClick="Change_settings" Text="Change settings" CssClass="btn"/>
-                    <asp:Button runat="server" OnClick="Delete_band" Text="Delete band" CssClass="btn" BackColor="#C41E3A"/>
+                    <p> Give the band code number to other band members so they can join the band. </p>
+                    <asp:Label runat="server" ID="rule"> Only the band owner can change the settings for a band. </asp:Label>
+                    <asp:Button runat="server" ID="change_settings_btn" OnClick="Change_settings" Text="Change settings" CssClass="btn"/>
+                    <asp:Button runat="server" ID="delete_band_btn" OnClick="Delete_band" Text="Delete band" CssClass="btn" BackColor="#C41E3A"/>
                 </asp:Panel>
 
                 <asp:Panel class="change-settings" runat="server" ID="change_settings">

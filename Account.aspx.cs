@@ -18,12 +18,6 @@ namespace Bendio
             string cs = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
             cnn = new SqlConnection(cs);
             cnn.Open();
-
-            if (Request.Cookies["email"] != null)
-            {
-                create_acc.Attributes["style"] = "display: none";
-                log_in.Attributes["style"] = "max-width: 100%";
-            }
         }
 
         private void CreateCookie(string value, string cookie_name)
@@ -58,6 +52,11 @@ namespace Bendio
             string user = "INSERT INTO [Bendio].[dbo].[User] (username, email, password) VALUES ('" + username_text + "','" + email_text + "','" + password_text + "')";
             SqlCommand sqlCmd1 = new SqlCommand(user, cnn);
             sqlCmd1.ExecuteNonQuery();
+
+            if (Request.Cookies["email"] != null)
+            {
+                Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
+            }
 
             string cookie_name = "email";
             CreateCookie(email_text, cookie_name);
