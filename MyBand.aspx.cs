@@ -136,11 +136,23 @@ namespace Bendio
 
             band_default_settings.Attributes["style"] = "display: flex";
 
+            /*Putting the default setting into the band.*/
             band_name.Text = bandInfo.name;
             band_members.Text = bandInfo.members.ToString();
             band_description.Text = bandInfo.description;
             band_code.Text = bandInfo.code;
-            band_owner.Text = bandInfo.owner;
+
+            /*Getting the username of the owner of a band with email field*/
+            string get_username_by_mail = "SELECT username FROM [Bendio].[dbo].[User] WHERE email = '" + bandInfo.owner + "';";
+            SqlCommand sqlCmd = new SqlCommand(get_username_by_mail, cnn);
+
+            using (SqlDataReader sqlReader = sqlCmd.ExecuteReader())
+            {
+                while (sqlReader.Read())
+                {
+                    band_owner.Text = sqlReader.GetString(0);
+                }
+            }
 
             if (!IsPostBack)
             {
