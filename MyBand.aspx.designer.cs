@@ -123,6 +123,15 @@ namespace Bendio
         protected global::System.Web.UI.WebControls.Button delete_band_btn;
 
         /// <summary>
+        /// calendar_btn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button calendar_btn;
+
+        /// <summary>
         /// change_settings control.
         /// </summary>
         /// <remarks>
@@ -157,6 +166,51 @@ namespace Bendio
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox change_description;
+
+        /// <summary>
+        /// calendar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel calendar;
+
+        /// <summary>
+        /// rehersal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rehersal;
+
+        /// <summary>
+        /// new_rehersal_container control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel new_rehersal_container;
+
+        /// <summary>
+        /// new_rehersal_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox new_rehersal_date;
+
+        /// <summary>
+        /// new_rehersal_time control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox new_rehersal_time;
 
         /// <summary>
         /// join_make_band control.

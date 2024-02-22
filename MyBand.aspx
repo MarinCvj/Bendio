@@ -49,6 +49,7 @@
                     <asp:Label runat="server" ID="rule"> Only the band owner can change the settings for a band. </asp:Label>
                     <asp:Button runat="server" ID="change_settings_btn" OnClick="Change_settings" Text="Change settings" CssClass="btn"/>
                     <asp:Button runat="server" ID="delete_band_btn" OnClick="Delete_band" Text="Delete band" CssClass="btn" BackColor="#C41E3A"/>
+                    <asp:Button runat="server" ID="calendar_btn" OnClick="Calendar_btn" Text="Rehersal calendar" CssClass="btn"/>
                 </asp:Panel>
 
                 <asp:Panel class="change-settings" runat="server" ID="change_settings">
@@ -68,6 +69,35 @@
                     </div>
                     <asp:Button runat="server" OnClick="Save_settings" Text="Save" CssClass="btn"/>
                     <asp:Button runat="server" OnClick="Cancel" Text="Cancel" CssClass="btn" BackColor="#C41E3A"/>
+                </asp:Panel>
+
+                <asp:Panel runat="server" CssClass="calendar" ID="calendar">
+                    <div class="rehersal-info" style="border-top: 1px solid grey">
+                        <b>Date</b>
+                        <b>Time</b>
+                    </div>
+                    <asp:Repeater runat="server" ID="rehersal">
+                        <ItemTemplate>
+                            <div class="rehersal-info">
+                                <span><%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem,"date")).ToString("yyyy-MM-dd") %></span>
+                                <span><%# DataBinder.Eval(Container.DataItem,"time") %></span>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <asp:Button runat="server" OnClick="New_rehersal" Text="Add a new rehersal" CssClass="btn" style="margin-top: 5rem;"/>
+                    <asp:Button runat="server" OnClick="Cancel" Text="Back" CssClass="btn"/>
+                </asp:Panel>
+
+                <asp:Panel runat="server" CssClass="new-rehersal" ID="new_rehersal_container">
+                    <div>
+                        <p>Date</p>
+                        <asp:TextBox runat="server" ID="new_rehersal_date" TextMode="Date"></asp:TextBox>
+                    </div>
+                    <div>
+                        <p>Time</p>
+                        <asp:TextBox runat="server" ID="new_rehersal_time" TextMode="Time"></asp:TextBox>
+                    </div>
+                    <asp:Button runat="server" OnClick="Add_rehersal" Text="Add" CssClass="btn"/>
                 </asp:Panel>
 
                 <asp:Panel CssClass="join-make-band" runat="server" ID="join_make_band">

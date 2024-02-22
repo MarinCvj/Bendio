@@ -46,6 +46,46 @@
     display: block;
 }
 
+.calendar {
+    display: flex;
+    flex-direction: column;
+}
+
+.rehersal-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 7rem;
+    background-color: rgb(0, 0, 0, 0.5);
+    padding: 2rem 1rem;
+    border: 1px solid grey;
+}
+
+.new-rehersal {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.new-rehersal div {
+    display: flex;
+    gap: 1rem;
+}
+
+input[type=date], input[type=time] {
+    background-color: transparent;
+    color: white;
+    border: 1px solid grey;
+}
+
+    input[type=date]:hover, input[type=time]:hover {
+        cursor: pointer;
+    }
+
+    input[type=date]:focus, input[type=time]:focus {
+        border: 1px solid var(--color);
+    }
+
 @media all and (max-width:1000px) {
     .band-code {
         width: 30%;

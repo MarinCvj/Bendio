@@ -27,6 +27,13 @@ namespace Bendio
         public string password;
         public int? bandID;
     }
+    public class Calendar
+    {
+        public int id;
+        public string date;
+        public string time;
+        public int bandID;
+    }
     public partial class MyBand : System.Web.UI.Page
     {
         SqlConnection cnn;
@@ -113,6 +120,43 @@ namespace Bendio
                 return userInfo;
             }
         }
+        public Calendar Get_calendar_data()
+        {
+            Band bandInfo = Get_band_data();
+            string cs = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
+            using (cnn = new SqlConnection(cs))
+            {                
+                cnn.Open();
+
+                SqlCommand sqlCmd1 = new SqlCommand();
+                sqlCmd1.CommandText = "dbo.GetCalendarByBandID";
+                sqlCmd1.CommandType = CommandType.StoredProcedure;
+                sqlCmd1.Connection = cnn;
+                SqlParameter param1 = new SqlParameter("@BandID", bandInfo.id);
+                sqlCmd1.Parameters.Add(param1);
+
+                /*Creating a data set that can hold multiple tables at once*/
+                SqlDataAdapter da = new SqlDataAdapter(sqlCmd1);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                if (ds.Tables[0].Rows.Count <= 0)
+                {
+                    return null;
+                }
+
+                /*Creating an object bandInfo of a class Band that contains all data of 1 band*/
+                Calendar CalendarInfo = new Calendar
+                {
+                    id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]),
+                    date = ds.Tables[0].Rows[0]["date"].ToString(),
+                    time = ds.Tables[0].Rows[0]["time"].ToString(),
+                    bandID = Convert.ToInt32(ds.Tables[0].Rows[0]["Band_ID"])
+                };
+
+                return CalendarInfo;
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -123,6 +167,7 @@ namespace Bendio
 
             Band bandInfo = Get_band_data();
             User userInfo = Get_user_data();
+            Calendar calendarInfo = Get_calendar_data();
 
             if (bandInfo == null || userInfo.bandID.Equals(null))
             {
@@ -135,6 +180,8 @@ namespace Bendio
             cnn.Open();
 
             band_default_settings.Attributes["style"] = "display: flex";
+            calendar.Attributes["style"] = "display: none";
+            new_rehersal_container.Attributes["style"] = "display: none";
 
             /*Putting the default setting into the band.*/
             band_name.Text = bandInfo.name;
@@ -169,6 +216,25 @@ namespace Bendio
                 change_members.Text = bandInfo.members.ToString();
                 change_description.Text = bandInfo.description;
             }
+
+            /*
+            rehersal_band_name.Text = bandInfo.name;
+            DateTime date = DateTime.Parse(calendarInfo.date);
+            string formattedDate = date.ToString("yyyy-MM-dd");
+            rehersal_date.Text = formattedDate;
+            rehersal_time.Text = calendarInfo.time;
+            */
+
+            SqlCommand sqlCmd1 = new SqlCommand();
+            sqlCmd1.CommandText = "SELECT date, time FROM Calendar WHERE Band_ID = " + bandInfo.id + "";
+            sqlCmd1.CommandType = CommandType.Text;
+            sqlCmd1.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(sqlCmd1);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            rehersal.DataSource = ds.Tables[0];
+            rehersal.DataBind();
         }
 
         protected void Change_settings(object sender, EventArgs e)
@@ -315,6 +381,42 @@ namespace Bendio
             /*The user has 0 bands so display the join make band window*/
             band_default_settings.Attributes["style"] = "display: none";
             join_make_band.Attributes["style"] = "display: flex";
+
+            cnn.Close();
+        }
+
+        protected void Calendar_btn(object sender, EventArgs e)
+        {
+            band_default_settings.Attributes["style"] = "display: none";
+            calendar.Attributes["style"] = "display: flex";
+        }
+
+        protected void New_rehersal(object sender, EventArgs e)
+        {
+            band_default_settings.Attributes["style"] = "display: none";
+            new_rehersal_container.Attributes["style"] = "display: flex";
+            calendar.Attributes["style"] = "display: none";
+        }
+
+        protected void Add_rehersal(object sender, EventArgs e)
+        {
+            string date_new_rehersal = new_rehersal_date.Text;
+            string time_new_rehersal = new_rehersal_time.Text;
+
+            Band bandInfo = Get_band_data();
+
+            string cs = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            /*Putting a new rehersal data into a table*/
+            string new_rehersal_input = "INSERT INTO Calendar VALUES ('" + date_new_rehersal + "', '" + time_new_rehersal + "', "+ bandInfo.id +");";
+            SqlCommand sqlCmd = new SqlCommand(new_rehersal_input, cnn);
+            sqlCmd.ExecuteNonQuery();
+
+            band_default_settings.Attributes["style"] = "display: none";
+            new_rehersal_container.Attributes["style"] = "display: none";
+            calendar.Attributes["style"] = "display: flex";
 
             cnn.Close();
         }
