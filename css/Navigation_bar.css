@@ -41,6 +41,7 @@
         text-decoration: none;
         transition: all 0.2s ease-out;
         position: relative;
+        font-weight: bold;
     }
 
         .nav-links a::before {

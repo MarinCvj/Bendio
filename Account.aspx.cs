@@ -18,6 +18,13 @@ namespace Bendio
             string cs = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
             cnn = new SqlConnection(cs);
             cnn.Open();
+
+            if (Request.Cookies["email"] != null)
+            {
+                log_out_btn.Visible = true;
+                create_acc.Visible = false;
+                log_in.Visible = false;
+            }
         }
 
         private void CreateCookie(string value, string cookie_name)
@@ -89,6 +96,17 @@ namespace Bendio
                 wrong.Visible = true;
             }
             cnn.Close();
+        }
+
+        protected void Log_out(object sender, EventArgs e)
+        {
+            if (Request.Cookies["email"] != null)
+            {
+                Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
+                log_out_btn.Visible = false;
+                create_acc.Visible = true;
+                log_in.Visible = true;
+            }
         }
     }
 }
