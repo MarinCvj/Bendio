@@ -42,6 +42,24 @@ namespace Bendio
         protected global::System.Web.UI.WebControls.Panel create_acc;
 
         /// <summary>
+        /// empty_fields control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label empty_fields;
+
+        /// <summary>
+        /// already_exists control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label already_exists;
+
+        /// <summary>
         /// username_create control.
         /// </summary>
         /// <remarks>
@@ -69,15 +87,6 @@ namespace Bendio
         protected global::System.Web.UI.WebControls.TextBox password_create;
 
         /// <summary>
-        /// already_exists control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label already_exists;
-
-        /// <summary>
         /// log_in control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace Bendio
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel log_in;
+
+        /// <summary>
+        /// wrong control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label wrong;
 
         /// <summary>
         /// email_log control.
@@ -103,15 +121,6 @@ namespace Bendio
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox password_log;
-
-        /// <summary>
-        /// wrong control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label wrong;
 
         /// <summary>
         /// log_out_btn control.

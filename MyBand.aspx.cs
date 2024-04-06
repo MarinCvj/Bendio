@@ -167,10 +167,12 @@ namespace Bendio
 
             Band bandInfo = Get_band_data();
             User userInfo = Get_user_data();
-            Calendar calendarInfo = Get_calendar_data();
 
             if (bandInfo == null || userInfo.bandID.Equals(null))
             {
+                band_default_settings.Attributes["style"] = "display: none";
+                calendar.Attributes["style"] = "display: none";
+                new_rehersal_container.Attributes["style"] = "display: none";
                 join_make_band.Attributes["style"] = "display: flex";
                 return;
             }
@@ -182,6 +184,8 @@ namespace Bendio
             band_default_settings.Attributes["style"] = "display: flex";
             calendar.Attributes["style"] = "display: none";
             new_rehersal_container.Attributes["style"] = "display: none";
+            del_rehersal_btn.Attributes["style"] = "display: flex";
+            del_rehersal.Attributes["style"] = "display: none";
 
             /*Putting the default setting into the band.*/
             band_name.Text = bandInfo.name;
@@ -205,7 +209,11 @@ namespace Bendio
             {
                 change_settings_btn.Visible = false;
                 delete_band_btn.Visible = false;
-            }else
+                calendar_btn.Attributes["style"] = "margin-top: 3rem";
+                new_rehersal_btn.Visible = false;
+                del_rehersal_btn.Visible = false;
+            }
+            else
             {
                 rule.Visible = false;
             }
@@ -217,16 +225,12 @@ namespace Bendio
                 change_description.Text = bandInfo.description;
             }
 
-            /*
-            rehersal_band_name.Text = bandInfo.name;
-            DateTime date = DateTime.Parse(calendarInfo.date);
-            string formattedDate = date.ToString("yyyy-MM-dd");
-            rehersal_date.Text = formattedDate;
-            rehersal_time.Text = calendarInfo.time;
-            */
+            /*Putting the labels for info on deleting a rehersal.*/
+            successfull_del.Visible = false;
+            unsuccessfull_del.Visible = false;
 
             SqlCommand sqlCmd1 = new SqlCommand();
-            sqlCmd1.CommandText = "SELECT date, time FROM Calendar WHERE Band_ID = " + bandInfo.id + "";
+            sqlCmd1.CommandText = "SELECT * FROM Calendar WHERE Band_ID = " + bandInfo.id + "";
             sqlCmd1.CommandType = CommandType.Text;
             sqlCmd1.Connection = cnn;
 
@@ -373,10 +377,15 @@ namespace Bendio
             SqlCommand sqlCmd = new SqlCommand(set_bandid_null, cnn);
             sqlCmd.ExecuteNonQuery();
 
+            /*Delete rehersals of a band that has that id*/
+            string del_rehersals = "DELETE FROM dbo.Calendar WHERE Band_ID = " + bandInfo.id + ";";
+            SqlCommand sqlCmd1 = new SqlCommand(del_rehersals, cnn);
+            sqlCmd1.ExecuteNonQuery();
+
             /*Delete the band from database*/
             string delete_band = "DELETE FROM dbo.Band WHERE ID="+ bandInfo.id + ";";
-            SqlCommand sqlCmd1 = new SqlCommand(delete_band, cnn);
-            sqlCmd1.ExecuteNonQuery();
+            SqlCommand sqlCmd2 = new SqlCommand(delete_band, cnn);
+            sqlCmd2.ExecuteNonQuery();
 
             /*The user has 0 bands so display the join make band window*/
             band_default_settings.Attributes["style"] = "display: none";
@@ -417,8 +426,98 @@ namespace Bendio
             band_default_settings.Attributes["style"] = "display: none";
             new_rehersal_container.Attributes["style"] = "display: none";
             calendar.Attributes["style"] = "display: flex";
+            del_rehersal_btn.Attributes["style"] = "display: flex";
+            del_rehersal.Attributes["style"] = "display: none";
+
+            SqlCommand sqlCmd1 = new SqlCommand();
+            sqlCmd1.CommandText = "SELECT * FROM Calendar WHERE Band_ID = " + bandInfo.id + "";
+            sqlCmd1.CommandType = CommandType.Text;
+            sqlCmd1.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(sqlCmd1);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            rehersal.DataSource = ds.Tables[0];
+            rehersal.DataBind();
 
             cnn.Close();
+        }
+        
+        protected void Back_of_add_rehersal(object sender, EventArgs e)
+        {
+            band_default_settings.Attributes["style"] = "display: none";
+            new_rehersal_container.Attributes["style"] = "display: none";
+            calendar.Attributes["style"] = "display: flex";
+        }
+
+        protected void Delete_rehersal(object sender, EventArgs e)
+        {
+            del_rehersal_btn.Attributes["style"] = "display: none";
+            del_rehersal.Attributes["style"] = "display: flex";
+            band_default_settings.Attributes["style"] = "display: none";
+            calendar.Attributes["style"] = "display: flex";
+        }
+
+        protected void Submit_ID_of_rehersal(object sender, EventArgs e)
+        {
+            Band bandInfo = Get_band_data();
+            string num_id_of_rehersal = id_of_rehersal.Text;
+
+            string cs = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            string Ids_of_rehersals = "SELECT ID FROM dbo.Calendar;";
+            SqlCommand sqlCmd = new SqlCommand(Ids_of_rehersals, cnn);
+
+            var if_exists = 0;
+            using (SqlDataReader sqlReader = sqlCmd.ExecuteReader())
+            {
+                while (sqlReader.Read())
+                {
+                    if(num_id_of_rehersal == sqlReader.GetInt32(0).ToString())
+                    {
+                        if_exists++;
+                    }
+                }
+            }
+
+            if (if_exists == 0) {
+                unsuccessfull_del.Visible = true;
+            }else
+            {
+                successfull_del.Visible = true;
+                /*Delete a rehersal from database*/
+                string delete_rehersal = "DELETE FROM dbo.Calendar WHERE Band_ID=" + bandInfo.id + " AND ID=" + num_id_of_rehersal + ";";
+                SqlCommand sqlCmd1 = new SqlCommand(delete_rehersal, cnn);
+                sqlCmd1.ExecuteNonQuery();
+            }
+
+            del_rehersal_btn.Attributes["style"] = "display: none";
+            del_rehersal.Attributes["style"] = "display: flex";
+            band_default_settings.Attributes["style"] = "display: none";
+            calendar.Attributes["style"] = "display: flex";
+
+            SqlCommand sqlCmd2 = new SqlCommand();
+            sqlCmd2.CommandText = "SELECT * FROM Calendar WHERE Band_ID = " + bandInfo.id + "";
+            sqlCmd2.CommandType = CommandType.Text;
+            sqlCmd2.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(sqlCmd2);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            rehersal.DataSource = ds.Tables[0];
+            rehersal.DataBind();
+
+            cnn.Close();
+        }
+
+        protected void Cancel_del_rehersal_btn(object sender, EventArgs e)
+        {
+            del_rehersal_btn.Attributes["style"] = "display: flex";
+            del_rehersal.Attributes["style"] = "display: none";
+            band_default_settings.Attributes["style"] = "display: none";
+            calendar.Attributes["style"] = "display: flex";
         }
     }
 }

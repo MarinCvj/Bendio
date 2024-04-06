@@ -33,6 +33,24 @@ namespace Bendio
         protected global::Bendio.Controls.Navigation_bar Navigation_bar;
 
         /// <summary>
+        /// already_have_a_band control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label already_have_a_band;
+
+        /// <summary>
+        /// band_info control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel band_info;
+
+        /// <summary>
         /// band_name control.
         /// </summary>
         /// <remarks>

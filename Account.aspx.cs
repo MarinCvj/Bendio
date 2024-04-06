@@ -44,30 +44,43 @@ namespace Bendio
             string user_get = "SELECT email FROM [Bendio].[dbo].[User] WHERE email='" + email_text + "'";
             SqlCommand sqlCmd = new SqlCommand(user_get, cnn);
 
+            var if_exists = 0;
             using (SqlDataReader sqlReader = sqlCmd.ExecuteReader())
             {
                 while (sqlReader.Read())
                 {
                     if (sqlReader != null)
                     {
+                        if_exists++;
                         already_exists.Visible = true;
-                        return;
                     }
                 }
             }
 
-            string user = "INSERT INTO [Bendio].[dbo].[User] (username, email, password) VALUES ('" + username_text + "','" + email_text + "','" + password_text + "')";
-            SqlCommand sqlCmd1 = new SqlCommand(user, cnn);
-            sqlCmd1.ExecuteNonQuery();
-
-            if (Request.Cookies["email"] != null)
+            if (if_exists == 0)
             {
-                Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
+                already_exists.Visible = false;
             }
 
-            string cookie_name = "email";
-            CreateCookie(email_text, cookie_name);
-            Response.Redirect("~/MyBand.aspx");
+            if (username_text == "" || email_text == "" || password_text == "")
+            {
+                empty_fields.Visible = true;
+            }
+            else
+            {
+                string user = "INSERT INTO [Bendio].[dbo].[User] (username, email, password) VALUES ('" + username_text + "','" + email_text + "','" + password_text + "')";
+                SqlCommand sqlCmd1 = new SqlCommand(user, cnn);
+                sqlCmd1.ExecuteNonQuery();
+
+                if (Request.Cookies["email"] != null)
+                {
+                    Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
+                }
+
+                string cookie_name = "email";
+                CreateCookie(email_text, cookie_name);
+                Response.Redirect("~/MyBand.aspx");
+            }
             cnn.Close();
         }
 

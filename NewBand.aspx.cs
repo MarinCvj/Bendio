@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,8 +13,60 @@ namespace Bendio
     public partial class New_band : System.Web.UI.Page
     {
         SqlConnection cnn;
+        public User Get_user_data()
+        {
+            string cs = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
+            using (cnn = new SqlConnection(cs))
+            {
+                cnn.Open();
+
+                var cookie_email = Request.Cookies["email"].Value;
+
+                /*Creating an SqlCmd1 Command that has a type of a stord procedure with a parameter email*/
+                SqlCommand sqlCmd1 = new SqlCommand();
+                sqlCmd1.CommandText = "dbo.getUserInfo_by_email";
+                sqlCmd1.CommandType = CommandType.StoredProcedure;
+                sqlCmd1.Connection = cnn;
+                SqlParameter param1 = new SqlParameter("@email", cookie_email);
+                sqlCmd1.Parameters.Add(param1);
+
+                /*Creating a data set that can hold multiple tables at once*/
+                SqlDataAdapter da = new SqlDataAdapter(sqlCmd1);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                if (ds.Tables[0].Rows.Count <= 0)
+                {
+                    return null;
+                }
+
+                /*Creating an object UserInfo of a class User that contains all data of 1 user*/
+                User userInfo = new User
+                {
+                    id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]),
+                    username = ds.Tables[0].Rows[0]["username"].ToString(),
+                    email = ds.Tables[0].Rows[0]["email"].ToString(),
+                    password = ds.Tables[0].Rows[0]["password"].ToString()
+                };
+                if (ds.Tables[0].Rows[0]["Band_ID"] == DBNull.Value)
+                    userInfo.bandID = null;
+                else
+                    userInfo.bandID = Convert.ToInt32(ds.Tables[0].Rows[0]["Band_ID"]);
+
+                return userInfo;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+            User userInfo = Get_user_data();
+
+            if (!userInfo.bandID.Equals(null))
+            {
+                already_have_a_band.Visible = true;
+                band_info.Attributes["style"] = "display: none";
+                return;
+            }
+
             string cs = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
             cnn = new SqlConnection(cs);
             cnn.Open();

@@ -25,26 +25,29 @@
             <div class="account">
                 <asp:Panel runat="server" ID="create_acc" class="create-acc">
                     <h2>Create account</h2>
+
+                    <asp:Label runat="server" ID="empty_fields" CssClass="label" Text="All fields need to be filled." Visible="false"></asp:Label>
+                    <asp:Label runat="server" ID="already_exists" CssClass="label" Text="User with this email already exists." Visible="false"></asp:Label>
+
                     <p>Username</p>
                     <asp:TextBox runat="server" ID="username_create" placeholder="username"/>
                     <p>Email Address</p>
                     <asp:TextBox runat="server" TextMode="Email" ID="email_create" placeholder="you@example.com"/>
                     <p>Password</p>
-                    <asp:TextBox runat="server" TextMode="Password" ID="password_create" placeholder="********"/>
-
-                    <asp:Label runat="server" ID="already_exists" CssClass="label" Text="User with this email already exists." Visible="false"></asp:Label>
+                    <asp:TextBox runat="server" TextMode="Password" ID="password_create" placeholder="********"/>                    
 
                     <asp:Button CssClass="btn" runat="server" OnClick="Create_Account" Text="Create Account"/>
                 </asp:Panel>
             
                 <asp:Panel runat="server" ID="log_in" class="log-in">
                     <h2>Log in</h2>
+
+                    <asp:Label runat="server" CssClass="label" ID="wrong" Text="Wrong email or password." Visible="false"></asp:Label>
+
                     <p>Email Address</p>
                     <asp:TextBox runat="server" TextMode="Email" id="email_log" placeholder="you@example.com"/>
                     <p>Password</p>
                     <asp:TextBox runat="server" TextMode="Password" ID="password_log" placeholder="********"/>
-
-                    <asp:Label runat="server" ID="wrong" Text="Wrong email or password." Visible="false"></asp:Label>
 
                     <asp:Button CssClass="btn" runat="server" OnClick="Log_in" Text="Log in" />
                 </asp:Panel>

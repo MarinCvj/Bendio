@@ -186,6 +186,60 @@ namespace Bendio
         protected global::System.Web.UI.WebControls.Repeater rehersal;
 
         /// <summary>
+        /// new_rehersal_btn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button new_rehersal_btn;
+
+        /// <summary>
+        /// del_rehersal_btn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button del_rehersal_btn;
+
+        /// <summary>
+        /// del_rehersal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel del_rehersal;
+
+        /// <summary>
+        /// id_of_rehersal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox id_of_rehersal;
+
+        /// <summary>
+        /// successfull_del control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label successfull_del;
+
+        /// <summary>
+        /// unsuccessfull_del control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label unsuccessfull_del;
+
+        /// <summary>
         /// new_rehersal_container control.
         /// </summary>
         /// <remarks>
