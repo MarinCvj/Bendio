@@ -4,26 +4,30 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #212124;
+    background-color: rgba(22,22,22,255);
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     transition: all 0.5s ease-in-out;
+    
+}
+
+h1 {
+    margin: auto;
 }
 
 .container {
-    background-color: rgb(10, 10, 10, 0.1);
-    border-radius: 1rem;
-    border: 2px solid var(--color);
-    max-width: 50%;
+    background-color: rgba(40,40,40,255);
+    border-radius: 1rem;    
+    max-width: fit-content;
+    min-width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin: auto;
     margin-top: 1rem;
     margin-bottom: 2rem;
-    padding: 2rem;
-    box-shadow: rgba(200, 200, 200, 0.35) 0px 0px 10px;
+    padding: 2rem;    
     animation: appear 0.5s;
 }
 
@@ -37,25 +41,15 @@ input {
     transition: all 0.5s ease-in-out;
 }
 
-    input:focus {
-        border-color: var(--color);
-    }
-
 .desc {
-    text-align: center;
-    padding: 1rem 0rem !important;
-    background-color: rgb(150, 150, 150, 0.3) !important;
+    padding: 1rem;
+    background-color: rgba(22,22,22,255);
     border-radius: 0.5rem;
-    border: 2px solid gray !important;
+    border: none;
     color: white;
-    width: 100%;
+    width: 90%;
     resize: none;
 }
-
-    .desc::placeholder {
-        text-align: center;
-        color: white;
-    }
 
 .label {
     margin-top: 2rem;
@@ -65,36 +59,24 @@ input {
 
 .btn {
     width: 100%;
+    max-width: 100%;
     background-color: #000000;
-    border: 2px solid var(--color);
-    border-radius: 1rem;
+    border-radius: 2rem;
+    border: none;
     color: #FFFFFF;
     cursor: pointer;
     font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     font-size: 16px;
     font-weight: 600;
     min-height: 60px;
-    margin: auto;
     margin-top: 1rem;
     white-space: normal;
 }
 
-.close {
-    transform: rotate(45deg);
-    position: relative;
-    left: 100%;
-    width: 2rem;
-    height: 2rem;
-    color: white;
-    background-color: transparent;
-    border: none;
-    font-size: 2rem;
-    margin-top: -2rem;
-}
-
-.close:hover {
-    cursor: pointer;
-}
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
 
 @keyframes appear {
     0% {

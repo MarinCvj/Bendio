@@ -21,55 +21,56 @@
 
             <div class="band-info">
                 <asp:Panel CssClass="default-settings" runat="server" ID="band_default_settings">
-                    <div class="band-info-parts">
-                        <p>Name: </p>
-                        <asp:Label runat="server" ID="band_name"></asp:Label>
-                    </div>
+                    <div class="infos">
+                        <div class="band-infos">
+                            <p>Name </p>
+                            <p>Members </p>
+                            <p>Band code </p>
+                            <p>Band owner </p>
+                        </div>
 
-                    <div class="band-info-parts">
-                        <p>Number of members: </p>
-                        <asp:Label runat="server" ID="band_members"></asp:Label>
-                    </div>
-
-                    <div class="band-info-parts">
-                        <p>Description: </p>
-                        <asp:Label runat="server" ID="band_description"></asp:Label>
-                    </div>
-
-                    <div class="band-info-parts">
-                        <p>Band code: </p>
-                        <asp:Label runat="server" ID="band_code"></asp:Label>
-                    </div>
-
-                    <div class="band-info-parts">
-                        <p>Band owner: </p>
-                        <asp:Label runat="server" ID="band_owner"></asp:Label>
+                        <div class="band-infos">
+                            <asp:Label runat="server" ID="band_name"></asp:Label>
+                            <asp:Label runat="server" ID="band_members"></asp:Label>
+                            <asp:Label runat="server" ID="band_code"></asp:Label>
+                            <asp:Label runat="server" ID="band_owner"></asp:Label>
+                        </div>
                     </div>
                     <p class="label"> Give the band code number to other band members so they can join the band. </p>
+
+                    <div class="band-infos">
+                        <p>Description: </p>
+                        <asp:Label runat="server" CssClass="desc" ID="band_description"></asp:Label>
+                    </div>
                     <asp:Label runat="server" CssClass="label" ID="rule"> Only the band owner can make changes. </asp:Label>
-                    <asp:Button runat="server" ID="change_settings_btn" OnClick="Change_settings" Text="Change settings" CssClass="btn"/>
+                    <asp:Button runat="server" style="margin-top: 2rem" ID="change_settings_btn" OnClick="Change_settings" Text="Change settings" CssClass="btn"/>
                     <asp:Button runat="server" ID="calendar_btn" OnClick="Calendar_btn" Text="Rehersal calendar" CssClass="btn"/>
                     <asp:Button runat="server" ID="files_btn" OnClick="Files_btn" Text="Sharing files" CssClass="btn"/>
                 </asp:Panel>
 
                 <asp:Panel class="change-settings" runat="server" ID="change_settings">
-                    <div class="band-info-parts">
-                        <b>Name: </b>
-                        <asp:TextBox runat="server" ID="change_name" MaxLength="50"></asp:TextBox>
+                    <div class="infos">
+                        <div class="band-infos">
+                            <b>Name </b>
+                            <b>Number of members </b>
+                        </div>
+
+                        <div class="band-infos">
+                            <asp:TextBox runat="server" ID="change_name" MaxLength="50"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="change_members" TextMode="Number"></asp:TextBox>
+                        </div>
                     </div>
 
-                    <div class="band-info-parts">
-                        <b>Number of members: </b>
-                        <asp:TextBox runat="server" ID="change_members" TextMode="Number"></asp:TextBox>
-                    </div>
-
-                    <div class="band-info-parts">
-                        <b>Description: </b>
+                    <div class="band-infos">
+                        <b>Description </b>
                         <asp:TextBox runat="server" TextMode="MultiLine" MaxLength="100" CssClass="desc" placeholder="About your band" ID="change_description"></asp:TextBox>
                     </div>
-                    <asp:Button runat="server" OnClick="Save_settings" Text="Save" CssClass="btn"/>
-                    <asp:Button runat="server" ID="delete_band_btn" OnClick="Delete_band" Text="Delete band" CssClass="btn"/>
-                    <asp:Button runat="server" OnClick="Cancel" Text="Cancel" CssClass="btn"/>                    
+
+                    <div>
+                        <asp:Button runat="server" OnClick="Save_settings" Text="Save" CssClass="btn"/>
+                        <asp:Button runat="server" ID="delete_band_btn" OnClick="Delete_band" Text="Delete band" CssClass="btn"/>
+                        <asp:Button runat="server" OnClick="Cancel" Text="Cancel" CssClass="btn"/>
+                    </div>
                 </asp:Panel>
 
                 <asp:Panel runat="server" CssClass="calendar" ID="calendar">
@@ -177,7 +178,7 @@
                 <asp:Panel CssClass="join-make-band" runat="server" ID="join_make_band">
                     <h3>You don't have a band</h3>
                     <b>Create a new band or join one</b>
-                    <a href="NewBand.aspx"><button class="btn">Create a new band</button></a>
+                    <asp:Button runat="server" OnClick="Go_to_new_band_page" Text="Create a new band" CssClass="btn"/>
                     <asp:Button runat="server" OnClick="Join_band" Text="Join a band" CssClass="btn"/>
                 </asp:Panel>
 
@@ -189,11 +190,11 @@
         </asp:Panel>
 
         <asp:Panel CssClass="band-code" runat="server" ID="enter_band_code">
-            <asp:Button runat="server" CssClass="close" OnClick="Close" Text="+"></asp:Button>
             <b>Enter the band code that the owner gave to you:</b>
             <asp:Label runat="server" ID="invalid_band_code" CssClass="invalid_code" Text="Band code is invalid." Visible="false"></asp:Label>
             <asp:TextBox runat="server" ID="code" placeholder="000000" style="text-transform:uppercase" MaxLength="6"></asp:TextBox>
             <asp:Button runat="server" OnClick="Enter_band_code" Text="Enter" CssClass="btn"/>
+            <asp:Button runat="server" CssClass="btn" OnClick="Close" Text="Close"></asp:Button>
         </asp:Panel>
     </form>
 </body>

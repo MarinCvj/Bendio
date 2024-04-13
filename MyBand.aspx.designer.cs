@@ -69,15 +69,6 @@ namespace Bendio
         protected global::System.Web.UI.WebControls.Label band_members;
 
         /// <summary>
-        /// band_description control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label band_description;
-
-        /// <summary>
         /// band_code control.
         /// </summary>
         /// <remarks>
@@ -94,6 +85,15 @@ namespace Bendio
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label band_owner;
+
+        /// <summary>
+        /// band_description control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label band_description;
 
         /// <summary>
         /// rule control.

@@ -9,6 +9,10 @@
     justify-content: center;
 }
 
+    .account:last-child, h4 {
+        align-self: center;
+    }
+
 .create-acc {
     max-width: 40%;
 }

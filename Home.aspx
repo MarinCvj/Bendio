@@ -21,21 +21,24 @@
         <div class="container">
             <h1>Welcome to Bendio</h1>
             <h2>Here you can make your band better.</h2>
+            <h2>Here is how. </h2>
 
             <div class="content">
-            <h2>Every possibility we offer: </h2>
+                <h3>1. Make your account.</h3>
+                <p>Firstly, you will need to make an account in a few seconds.</p>
+                <a href="Account.aspx">Go to account</a>
 
-            <h3>Create a new band</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <h3>2. Create a new band.</h3>
+                <p>After you have created your account successfully, go to new band page in the navigation bar and create a new band.</p>
 
-            <h3>Add some members to your band</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            
-            <h3>Put your rehersals on a schedule</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <h3>3. Add some members to your band.</h3>
+                <p>The band code is uneque for every band. Give it to your bandmate so they can join your band. Only the band owner/creator of the band can make some changes.</p>
 
-            <h3>Put some files in your sharing space</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <h3>4. Put your rehersals on a schedule</h3>
+                <p>Keep track of your rehersals in our rehersal chalendar, add and delete them as you wish.</p>
+
+                <h3>5. Put some files in your sharing space</h3>
+                <p>Bands often need a file sharing space, we got it. Put your lyrics for songs and have everything lined up as you like it.</p>
             </div>
         </div>
     </form>

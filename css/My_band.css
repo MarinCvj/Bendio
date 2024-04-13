@@ -1,14 +1,40 @@
-﻿.default-settings {
+﻿.container {
+    background-color: rgba(40,40,40,255);
+    border-radius: 1rem;
+    max-width: fit-content;
+    min-width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    animation: appear 0.5s;
+}
+
+.band-info {
+    margin-top: 2rem;
+}
+
+.default-settings {
     display: none;
     flex-direction: column;
     margin: auto;
     animation: appear 0.5s;
 }
 
-.band-info-parts {
+.infos {
     display: flex;
-    align-items: center;
     gap: 1rem;
+}
+
+.band-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
 }
 
 .change-settings {
@@ -18,6 +44,10 @@
     animation: appear 0.5s;
 }
 
+    .change-settings .band-infos {
+        gap: 1rem;
+    }
+
 #band_description {  
     width: 50%;
     word-wrap: break-word;
@@ -26,24 +56,30 @@
 .join-make-band {
     display: none;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
 }
 
 .band-code {
     background-color: rgb(10, 10, 10);
     border-radius: 1rem;
-    border: 2px solid var(--color);
     padding: 2rem;
     flex-direction: column;
     margin: auto;
     gap: 1rem;
     width: 10%;
-    transform: scale(1.5);
+    transform: scale(1.3);
     position: absolute;
     top: 40%;
     left: 43.5%;
     display: none;
     animation: appear 0.5s;
+    align-items: center;
+}
+
+.band-code input {
+    max-width: 80%;
+    text-align: center;
 }
 
 .invalid_code {
@@ -102,7 +138,6 @@ input[type=date], input[type=time] {
     margin: 2rem auto;
     background-color: rgb(10, 10, 10, 0.5);
     border-radius: 1rem;
-    border: 2px solid var(--color);
     padding: 2rem;
 }
 
@@ -145,7 +180,6 @@ input[type=date], input[type=time] {
 .opened-file {
     background-color: rgb(10, 10, 10);
     border-radius: 1rem;
-    border: 2px solid var(--color);
     padding: 2rem;
     flex-direction: column;
     margin: auto;
@@ -165,6 +199,20 @@ input[type=date], input[type=time] {
         top: 30%;
         left: 31.5%;
     }
+
+    .opened-file {
+        width: 30%;
+        top: 20%;
+        left: 32%;
+    }
+}
+
+@media all and (max-width: 700px) {
+    .opened-file {
+        width: 50%;
+        top: 20%;
+        left: 21%;
+    }
 }
 
 @media all and (max-width:500px) {
@@ -172,6 +220,12 @@ input[type=date], input[type=time] {
         width: 30%;
         top: 30%;
         left: 26%;
+    }
+
+    .opened-file {
+        width: 60%;
+        top: 20%;
+        left: 14%;
     }
 }
 

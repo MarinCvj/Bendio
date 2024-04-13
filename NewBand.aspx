@@ -24,18 +24,22 @@
             <asp:Label runat="server" ID="already_have_a_band" Visible="false"> You already have a band. <br /> This page works for just one band. <br /> You can delete your current band to create another.</asp:Label>
 
             <asp:Panel runat="server" CssClass="band-info" ID="band_info">
-                <p>Band name </p>
-                <asp:TextBox runat="server" ID="band_name" placeholder="My band"></asp:TextBox>
+                <div>
+                    <p>Band name </p>
+                    <asp:TextBox runat="server" ID="band_name" placeholder="Name"></asp:TextBox>
+                </div>
 
-                <p>Number of band members </p>
-                <asp:TextBox runat="server" TextMode="Number" ID="members_num" placeholder="Number of members"></asp:TextBox>
+                <div>
+                    <p>Number of band members </p>
+                    <asp:TextBox runat="server" TextMode="Number" ID="members_num" placeholder="0"></asp:TextBox>
+                </div>
                 <br /><br />
                 <asp:Label runat="server" ID="zero_members" Text="The band can't have 0 members." Visible="false"></asp:Label>
 
                 <p>Description</p>
                 <asp:TextBox runat="server" CssClass="desc" TextMode="MultiLine" ID="description" placeholder="About your band"></asp:TextBox>
 
-                <asp:Button runat="server" CssClass="btn" OnClick="Submit" Text="Submit" />
+                <asp:Button runat="server" CssClass="btn submit" OnClick="Submit" Text="Submit" />
             </asp:Panel>
         </div>
     </form>

@@ -840,5 +840,10 @@ namespace Bendio
             files.Attributes["style"] = "display: flex";
             container.Attributes["style"] = "opacity: 1";
         }
+
+        protected void Go_to_new_band_page(object sender, EventArgs e)
+        {
+            Response.Redirect("~/NewBand.aspx");
+        }
     }
 }

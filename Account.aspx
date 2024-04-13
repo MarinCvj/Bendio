@@ -52,7 +52,7 @@
                     <asp:Button CssClass="btn" runat="server" OnClick="Log_in" Text="Log in" />
                 </asp:Panel>
 
-                <asp:Button CssClass="btn" style="padding: 1rem 2rem;" runat="server" ID="log_out_btn" OnClick="Log_out" Visible="false" Text="Log out"/>
+                <asp:Button CssClass="btn" style="padding: 1rem 2rem" runat="server" ID="log_out_btn" OnClick="Log_out" Visible="false" Text="Log out"/>
             </div>
         </div>
     </form>

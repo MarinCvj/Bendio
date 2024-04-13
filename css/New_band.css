@@ -1,9 +1,52 @@
 ﻿input {
     text-align: center;
+    width: 100%;
+    max-width: 30%;
+}
+
+.band-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.band-info div {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit {
+    display: flex;
+    align-self: center;
+    max-width: 30%;
+}
+
+.band-info div:first-child {
+    margin-top: 5rem;
+}
+
+@media all and (max-width:1600px) {
+    .band-info div {
+        width: 70%;
+    }
+}
+
+@media all and (max-width:1200px) {
+    .band-info div {
+        width: auto;
+    }
 }
 
 @media all and (max-width:500px) {
-    input[type="text"], input[type="number"] {
+    input [type="text"], input[type="number"] {
         padding: 1rem;
+    }
+}
+
+@media all and (max-width:400px) {
+    .submit {
+        font-size: 12px;
     }
 }
