@@ -27,19 +27,18 @@ body {
     animation: appear 0.5s;
 }
 
-input[type="text"], input[type="number"] {
-    padding: 0.5rem;
-    background-color: transparent;
+input {
+    padding: 1rem;
+    background-color: rgb(20, 20, 20);
+    border-radius: 24px;
     color: white;
     width: 100%;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    border: none;
     transition: all 0.5s ease-in-out;
 }
 
-    input[type="text"]:focus, input[type="number"]:focus {
-        border-bottom-color: var(--color);
+    input:focus {
+        border-color: var(--color);
     }
 
 .desc {
@@ -75,6 +74,7 @@ input[type="text"], input[type="number"] {
     font-size: 16px;
     font-weight: 600;
     min-height: 60px;
+    margin: auto;
     margin-top: 1rem;
     white-space: normal;
 }

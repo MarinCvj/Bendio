@@ -48,8 +48,8 @@
                     <p class="label"> Give the band code number to other band members so they can join the band. </p>
                     <asp:Label runat="server" CssClass="label" ID="rule"> Only the band owner can make changes. </asp:Label>
                     <asp:Button runat="server" ID="change_settings_btn" OnClick="Change_settings" Text="Change settings" CssClass="btn"/>
-                    <asp:Button runat="server" ID="delete_band_btn" OnClick="Delete_band" Text="Delete band" CssClass="btn"/>
                     <asp:Button runat="server" ID="calendar_btn" OnClick="Calendar_btn" Text="Rehersal calendar" CssClass="btn"/>
+                    <asp:Button runat="server" ID="files_btn" OnClick="Files_btn" Text="Sharing files" CssClass="btn"/>
                 </asp:Panel>
 
                 <asp:Panel class="change-settings" runat="server" ID="change_settings">
@@ -68,7 +68,8 @@
                         <asp:TextBox runat="server" TextMode="MultiLine" MaxLength="100" CssClass="desc" placeholder="About your band" ID="change_description"></asp:TextBox>
                     </div>
                     <asp:Button runat="server" OnClick="Save_settings" Text="Save" CssClass="btn"/>
-                    <asp:Button runat="server" OnClick="Cancel" Text="Cancel" CssClass="btn"/>
+                    <asp:Button runat="server" ID="delete_band_btn" OnClick="Delete_band" Text="Delete band" CssClass="btn"/>
+                    <asp:Button runat="server" OnClick="Cancel" Text="Cancel" CssClass="btn"/>                    
                 </asp:Panel>
 
                 <asp:Panel runat="server" CssClass="calendar" ID="calendar">
@@ -87,8 +88,8 @@
                         </ItemTemplate>
                     </asp:Repeater>
                     <asp:Button runat="server" OnClick="New_rehersal" ID="new_rehersal_btn" Text="Add a new rehersal" CssClass="btn" style="margin-top: 5rem;"/>
-                    <asp:Button runat="server" OnClick="Cancel" Text="Back" CssClass="btn"/>
                     <asp:Button runat="server" OnClick="Delete_rehersal" ID="del_rehersal_btn" Text="Delete rehersal" CssClass="btn" />
+                    <asp:Button runat="server" OnClick="Cancel" Text="Back" CssClass="btn"/>                    
 
                     <asp:Panel runat="server" CssClass="delete-rehersal" ID="del_rehersal">
                         <p>To delete a rehesal you need to input the ID of a rehersal you would like to delete.</p>
@@ -116,14 +117,77 @@
                     <asp:Button runat="server" OnClick="Back_of_add_rehersal" Text="Back" CssClass="btn"/>
                 </asp:Panel>
 
+                <asp:Panel runat="server" ID="files" CssClass="files">
+                    <div class="rehersal-info col-names">
+                        <b>ID</b>
+                        <b>Name</b>
+                    </div>
+                    <asp:Repeater runat="server" ID="files_table">
+                        <ItemTemplate>
+                            <div class="rehersal-info">
+                                <span><%# DataBinder.Eval(Container.DataItem,"ID") %></span>
+                                <span><%# DataBinder.Eval(Container.DataItem,"FileName") %></span>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+
+                    <asp:Button runat="server" OnClick="Go_to_Upload" Text="Upload" style="margin-top: 3rem" CssClass="btn"/>
+                    <asp:Button runat="server" OnClick="Delete_file" Text="Delete a file" ID="del_file_btn" CssClass="btn"/>
+                    <asp:Button runat="server" OnClick="View_file" Text="View file" ID="view_file_btn" CssClass="btn"/>
+                    <asp:Button runat="server" OnClick="Back_of_files" Text="Back" CssClass="btn"/>
+
+                    <asp:Panel runat="server" CssClass="delete-rehersal" ID="del_file">
+                        <p>To delete a file you need to input the ID of the file you would like to delete.</p>
+                        <div>
+                            <p>ID: </p>
+                            <asp:TextBox runat="server" ID="file_info" placeholder="0" TextMode="Number"></asp:TextBox>
+                        </div>
+                        <asp:Button runat="server" OnClick="Submit_ID_of_file" Text="Submit" CssClass="btn"/>
+                        <asp:Button runat="server" OnClick="Cancel_del_file_btn" Text="Cancel" CssClass="btn"/>
+                        <asp:Label runat="server" ID="successfull_file_del" CssClass="del-info" Visible="false" Text="You successfully deleted a file!"></asp:Label>
+                        <asp:Label runat="server" ID="unsuccessfull_file_del" CssClass="del-info" Visible="false" Text="Please check your ID."></asp:Label>
+                    </asp:Panel>
+
+                    <asp:Panel runat="server" CssClass="delete-rehersal" ID="view_file">
+                        <p>To view a file you need to input the ID of the file you would like to see.</p>
+                        <div>
+                            <p>ID: </p>
+                            <asp:TextBox runat="server" ID="view_file_info" placeholder="0" TextMode="Number"></asp:TextBox>
+                        </div>
+                        <asp:Button runat="server" OnClick="Submit_ID_of_file_to_see" Text="Submit" CssClass="btn"/>
+                        <asp:Button runat="server" OnClick="Close_view_file" Text="Cancel" CssClass="btn"/>
+                        <asp:Label runat="server" ID="unsuccessfull_view_file" CssClass="del-info" Visible="false" Text="Please check your ID."></asp:Label>
+                    </asp:Panel>
+                </asp:Panel>
+
+                <asp:Panel runat="server" ID="new_file" CssClass="upload-files">
+                    <div style="margin-top: 2rem;">
+                        <p>File&nbsp;name: </p>
+                        <asp:TextBox runat="server" ID="file_name" MaxLength="35" placeholder="name.txt"></asp:TextBox>
+                    </div>
+                    <div>
+                        <p>Browse your file: </p>
+                        <asp:FileUpload runat="server" ID="file"  />
+                    </div>
+                    <asp:Label runat="server" Visible="false" CssClass="label" ID="file_status"> File successfully inserted. </asp:Label>
+                    <asp:Button ID="Upload_btn" runat="server" Text="Submit" CssClass="btn" OnClick="Upload_files" />
+                    <asp:Button runat="server" OnClick="Back_of_upload" Text="Back" CssClass="btn"/>
+                </asp:Panel>
+
                 <asp:Panel CssClass="join-make-band" runat="server" ID="join_make_band">
                     <h3>You don't have a band</h3>
                     <b>Create a new band or join one</b>
-                    <asp:Button runat="server" OnClick="New_band" Text="Create a new band" CssClass="btn"/>
+                    <a href="NewBand.aspx"><button class="btn">Create a new band</button></a>
                     <asp:Button runat="server" OnClick="Join_band" Text="Join a band" CssClass="btn"/>
                 </asp:Panel>
+
             </div>
         </asp:Panel>
+        <asp:Panel CssClass="opened-file" runat="server" ID="opened_file">
+            <asp:Label runat="server" ID="file_content"></asp:Label>
+            <asp:Button runat="server" OnClick="Close_file" Text="Close" CssClass="btn"/>
+        </asp:Panel>
+
         <asp:Panel CssClass="band-code" runat="server" ID="enter_band_code">
             <asp:Button runat="server" CssClass="close" OnClick="Close" Text="+"></asp:Button>
             <b>Enter the band code that the owner gave to you:</b>
