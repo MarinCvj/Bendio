@@ -10,7 +10,7 @@ p {
     margin-left: 2rem;
 }
 
-a {
+.content a {
     color: var(--color);
     margin-left: 3rem;
     font-size: 20px;

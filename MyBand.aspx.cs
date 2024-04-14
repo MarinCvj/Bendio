@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace Bendio
 {
@@ -221,7 +222,8 @@ namespace Bendio
             del_rehersal.Attributes["style"] = "display: none";
             new_file.Attributes["style"] = "display: none";
             files.Attributes["style"] = "display: none";
-            opened_file.Attributes["style"] = "display: none";
+            opened_file_txt.Attributes["style"] = "display: none";
+            opened_file_audio.Attributes["style"] = "display: none";
 
             if (bandInfo == null || userInfo.bandID.Equals(null))
             {
@@ -259,6 +261,8 @@ namespace Bendio
                 calendar_btn.Attributes["style"] = "margin-top: 3rem";
                 new_rehersal_btn.Visible = false;
                 del_rehersal_btn.Visible = false;
+                upload_file.Visible = false;
+                del_file_btn.Visible = false;
             }
             else
             {
@@ -608,40 +612,51 @@ namespace Bendio
                 string fileName = Path.GetFileName(bandInfo.name + "_" + file.FileName);
                 string filePath = Server.MapPath("~/Uploads/" + fileName);
 
-                var file_name_exists = 0;
-                /*If a file with this name already exists.*/
-                string get_name_of_files = "SELECT FileName FROM Files WHERE Band_ID = " + bandInfo.id + ";";
-                SqlCommand sqlCmd = new SqlCommand(get_name_of_files, cnn);
+                /*Splited file path so I can get the extension of a file.*/
+                string[] file_path = filePath.Split('.');
 
-                using (SqlDataReader sqlReader = sqlCmd.ExecuteReader())
+                if (file_path[file_path.Length - 1] == "txt")
                 {
-                    while (sqlReader.Read())
+                    var file_name_exists = 0;
+                    /*If a file with this name already exists.*/
+                    string get_name_of_files = "SELECT FileName FROM Files WHERE Band_ID = " + bandInfo.id + ";";
+                    SqlCommand sqlCmd = new SqlCommand(get_name_of_files, cnn);
+
+                    using (SqlDataReader sqlReader = sqlCmd.ExecuteReader())
                     {
-                        if (sqlReader.GetString(0) == name_of_file)
+                        while (sqlReader.Read())
                         {
-                            file_name_exists++;
-                            break;
+                            if (sqlReader.GetString(0) == name_of_file)
+                            {
+                                file_name_exists++;
+                                break;
+                            }
                         }
                     }
-                }
 
-                if (File.Exists(filePath) || file_name_exists != 0)
+                    if (File.Exists(filePath) || file_name_exists != 0)
+                    {
+                        file_status.Text = "A file with this name already exists.";
+                        file_status.Visible = true;
+                    }
+                    else
+                    {
+                        file.SaveAs(filePath);
+
+                        // Insert the file path into the database
+                        string add_file_path = "INSERT INTO Files(FileName, FilePath, Band_ID) VALUES ('" + name_of_file + "','" + filePath + "','" + bandInfo.id + "');";
+                        SqlCommand sqlCmd1 = new SqlCommand(add_file_path, cnn);
+                        sqlCmd1.ExecuteNonQuery();
+
+                        file_status.Text = "File successfully inserted.";
+                        file_status.Visible = true;
+                    }
+                }else
                 {
-                    file_status.Text = "A file with this name already exists.";
+                    file_status.Text = "Please put a .txt file.";
                     file_status.Visible = true;
                 }
-                else
-                {
-                    file.SaveAs(filePath);
-
-                    // Insert the file path into the database
-                    string add_file_path = "INSERT INTO Files(FileName, FilePath, Band_ID) VALUES ('" + name_of_file + "','" + filePath + "','" + bandInfo.id + "');";
-                    SqlCommand sqlCmd1 = new SqlCommand(add_file_path, cnn);
-                    sqlCmd1.ExecuteNonQuery();
-
-                    file_status.Text = "File successfully inserted.";
-                    file_status.Visible = true;
-                }
+                    
                 cnn.Close();
             }
             else
@@ -791,21 +806,36 @@ namespace Bendio
                 {
                     while (sqlReader.Read())
                     {
-                        /*Getting file content*/
-                        fileContent = File.ReadAllText(sqlReader.GetString(0));
-                        if (fileContent == null || fileContent == "")
+                        /*Splited file path so I can get the extension of a file.*/
+                        string[] file_path = sqlReader.GetString(0).Split('.');
+
+                        /*Checking if a file is txt or audio.*/
+                        if (file_path[file_path.Length - 1] == "txt")
                         {
-                            file_content.Text = "This file is empty.";
+                            /*Getting file content*/
+                            fileContent = File.ReadAllText(sqlReader.GetString(0));
+                            if (fileContent == null || fileContent == "")
+                            {
+                                file_content.Text = "This file is empty.";
+                            }
+                            else
+                            {
+                                file_content.Text = fileContent.Replace("\r\n", "<br>");
+                            }
+                            opened_file_txt.Attributes["style"] = "display: flex";
                         }
-                        else
+                        /*
+                        if (file_path[file_path.Length - 1] == "mp3" || file_path[file_path.Length - 1] == "wav" || file_path[file_path.Length - 1] == "flac")
                         {
-                            file_content.Text = fileContent.Replace("\r\n", "<br>");
+                            audioSource.Attributes["src"] = "Uploads/" + file_path[file_path.Length - 1] + file_path[file_path.Length - 2] + "";
+                            audioSource.Attributes["type"] = "audio/" + file_path[file_path.Length - 1] + "";
+                            opened_file_audio.Attributes["style"] = "display: flex";
                         }
+                        */
                     }
                 }
 
-                /*Darken the container window and opening the file window.*/
-                opened_file.Attributes["style"] = "display: flex";
+                /*Darken the container window and opening the file window.*/                
                 container.Attributes["style"] = "opacity: 0.5";
             }
 
@@ -835,7 +865,7 @@ namespace Bendio
 
         protected void Close_file(object sender, EventArgs e)
         {
-            opened_file.Attributes["style"] = "display: none";
+            opened_file_txt.Attributes["style"] = "display: none";
             band_default_settings.Attributes["style"] = "display: none";
             files.Attributes["style"] = "display: flex";
             container.Attributes["style"] = "opacity: 1";

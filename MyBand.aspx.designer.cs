@@ -294,6 +294,15 @@ namespace Bendio
         protected global::System.Web.UI.WebControls.Repeater files_table;
 
         /// <summary>
+        /// upload_file control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button upload_file;
+
+        /// <summary>
         /// del_file_btn control.
         /// </summary>
         /// <remarks>
@@ -429,13 +438,13 @@ namespace Bendio
         protected global::System.Web.UI.WebControls.Panel join_make_band;
 
         /// <summary>
-        /// opened_file control.
+        /// opened_file_txt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel opened_file;
+        protected global::System.Web.UI.WebControls.Panel opened_file_txt;
 
         /// <summary>
         /// file_content control.
@@ -445,6 +454,24 @@ namespace Bendio
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label file_content;
+
+        /// <summary>
+        /// opened_file_audio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel opened_file_audio;
+
+        /// <summary>
+        /// audioSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSource audioSource;
 
         /// <summary>
         /// enter_band_code control.

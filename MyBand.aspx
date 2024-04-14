@@ -132,7 +132,7 @@
                         </ItemTemplate>
                     </asp:Repeater>
 
-                    <asp:Button runat="server" OnClick="Go_to_Upload" Text="Upload" style="margin-top: 3rem" CssClass="btn"/>
+                    <asp:Button runat="server" OnClick="Go_to_Upload" ID="upload_file" Text="Upload" style="margin-top: 3rem" CssClass="btn"/>
                     <asp:Button runat="server" OnClick="Delete_file" Text="Delete a file" ID="del_file_btn" CssClass="btn"/>
                     <asp:Button runat="server" OnClick="View_file" Text="View file" ID="view_file_btn" CssClass="btn"/>
                     <asp:Button runat="server" OnClick="Back_of_files" Text="Back" CssClass="btn"/>
@@ -150,7 +150,7 @@
                     </asp:Panel>
 
                     <asp:Panel runat="server" CssClass="delete-rehersal" ID="view_file">
-                        <p>To view a file you need to input the ID of the file you would like to see.</p>
+                        <p>To see a file you need to input the ID of the file you would like to see.</p>
                         <div>
                             <p>ID: </p>
                             <asp:TextBox runat="server" ID="view_file_info" placeholder="0" TextMode="Number"></asp:TextBox>
@@ -162,6 +162,7 @@
                 </asp:Panel>
 
                 <asp:Panel runat="server" ID="new_file" CssClass="upload-files">
+                    <b>You can only input .txt files.</b>
                     <div style="margin-top: 2rem;">
                         <p>File&nbsp;name: </p>
                         <asp:TextBox runat="server" ID="file_name" MaxLength="35" placeholder="name.txt"></asp:TextBox>
@@ -184,10 +185,19 @@
 
             </div>
         </asp:Panel>
-        <asp:Panel CssClass="opened-file" runat="server" ID="opened_file">
+        <asp:Panel CssClass="opened-file" runat="server" ID="opened_file_txt">
             <asp:Label runat="server" ID="file_content"></asp:Label>
             <asp:Button runat="server" OnClick="Close_file" Text="Close" CssClass="btn"/>
         </asp:Panel>
+
+        <!--
+        <asp:Panel CssClass="opened-file" runat="server" ID="opened_file_audio">            
+            <audio controls="controls">
+                <source runat="server" id="audioSource" src="" type="" />
+            </audio>
+            <asp:Button runat="server" OnClick="Close_file" Text="Close" CssClass="btn"/>
+        </asp:Panel>
+        -->
 
         <asp:Panel CssClass="band-code" runat="server" ID="enter_band_code">
             <b>Enter the band code that the owner gave to you:</b>

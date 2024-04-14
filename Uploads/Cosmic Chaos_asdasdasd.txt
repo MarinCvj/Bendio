@@ -1,0 +1,11 @@
+1. MAKE YOUR ACCOUNT
+2. CREATE A NEW BAND
+	go to new band page in the navigation bar and create a new band
+3. ADD SOME MEMBERS TO YOUR BAND
+	The band code is uneque for every band. 
+	Give it to your bandmate so they can join your band. 
+	Only the band owner/creator of the band can make some changes.
+4. PUT YOUR REHERSALS ON A SCHEDULE
+	Keep track of your rehersals in our rehersal chalendar, add and delete them as you wish.
+5. PUT SOME FILES IN YOUR SHARING SPACE
+	Bands often need a file sharing space, we got it. Put your lyrics for songs and have everything lined up as you like it.
