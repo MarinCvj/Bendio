@@ -441,13 +441,20 @@ namespace Bendio
             SqlCommand sqlCmd1 = new SqlCommand(del_rehersals, cnn);
             sqlCmd1.ExecuteNonQuery();
 
-            /*Delete the band from database*/
-            string delete_band = "DELETE FROM dbo.Band WHERE ID="+ bandInfo.id + ";";
-            SqlCommand sqlCmd2 = new SqlCommand(delete_band, cnn);
+            /*Delete files of a band that has that id*/
+            string del_files = "DELETE FROM dbo.Files WHERE Band_ID = " + bandInfo.id + ";";
+            SqlCommand sqlCmd2 = new SqlCommand(del_files, cnn);
             sqlCmd2.ExecuteNonQuery();
 
+            /*Delete the band from database*/
+            string delete_band = "DELETE FROM dbo.Band WHERE ID="+ bandInfo.id + ";";
+            SqlCommand sqlCmd3 = new SqlCommand(delete_band, cnn);
+            sqlCmd3.ExecuteNonQuery();
+
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+
             /*The user has 0 bands so display the join make band window*/
-            band_default_settings.Attributes["style"] = "display: none";
+            band_default_settings.Attributes["style"] = "display: none";    
             join_make_band.Attributes["style"] = "display: flex";
 
             cnn.Close();

@@ -58,6 +58,11 @@ namespace Bendio
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Cookies["email"] == null)
+            {
+                Response.Redirect("Account.aspx");
+            }
+
             User userInfo = Get_user_data();
 
             if (!userInfo.bandID.Equals(null))

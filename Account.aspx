@@ -20,7 +20,7 @@
         <uc1:Navigation_bar runat="server" ID="Navigation_bar" />
         <div class="container">
             <h1>Create account or Log in</h1>
-            <h4>You need to have an account to start a band.</h4>
+            <h4 class="label">You need to have an account to start a band.</h4>
 
             <div class="account">
                 <asp:Panel runat="server" ID="create_acc" class="create-acc">
