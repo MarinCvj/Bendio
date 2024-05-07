@@ -35,7 +35,7 @@ input {
     background-color: rgb(20, 20, 20);
     border-radius: 24px;
     color: white;
-    width: 100%;
+    width: 90%;
     border: none;
     transition: all 0.5s ease-in-out;
 }
@@ -106,8 +106,8 @@ input {
     }
 }
 
-@media all and (max-width:470px) {
+@media all and (max-width:950px) {
     .container {
-        max-width: 70%;
+        width: 70%;
     }
 }
